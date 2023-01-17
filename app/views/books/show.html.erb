@@ -25,6 +25,17 @@
             <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success" %></td>
             <td><%= link_to 'Destroy', @book, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
           <% end %>
+          <td>
+            <div id="post_raty"></div>
+              <script>
+                // scriptファイルをどのidの部分に配置するかを指定
+                let elem = document.querySelector('#post_raty');
+                let opt = {  
+                  //星画像の指定などのオプションをここに記述,
+                 };
+                raty(elem,opt);
+              </script>
+          </td>
         </tr>
       </table>
       <div class="book-comments-index">
