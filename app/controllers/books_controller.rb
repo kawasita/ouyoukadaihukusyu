@@ -9,6 +9,11 @@ class BooksController < ApplicationController
   def index
     @books = Book.all
     @book = Book.new
+    if params[:rate]
+      @books = Book.order(rate: :desc)
+    else params[:create]
+      @books = Book.order(created_at: :desc)
+    end
   end
 
   def create
@@ -49,6 +54,6 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :body)
+    params.require(:book).permit(:title, :body, :rate)
   end
 end
